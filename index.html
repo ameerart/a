@@ -162,7 +162,7 @@
 <!-- ================= شاشة الدخول الأولى (جداريات) =================
      لتغيير صورة الخلفية: عدّل مسار الصورة في الوسم img أدناه فقط -->
 <div id="splashScreen">
-<img id="splashBg" src="images/taher.jpg" alt="جدارية">
+<img id="splashBg" src="images/taher.jpg?v=2" alt="جدارية">
     <div class="splash-overlay"></div>
     <div class="splash-content">
         <div class="splash-brush">🖌️</div>
@@ -483,12 +483,13 @@ AOS.init({duration:1000,once:false});
         firebase.initializeApp(firebaseConfig);
         const db=firebase.firestore();
         const auth=firebase.auth();
-        const ADMIN_EMAIL="taheralrsam100@gmail.com";
+const ADMIN_EMAIL="taheralrsam100@gmail.com";
+        const ADMIN_EMAILS=["taheralrsam100@gmail.com","ameer@gmail.com"];
         const IMGBB_KEY="2992948833d81d6dc8555d60cdd13431";
         const MY_PHONE="9647829558820";
 let artworks=[],heroItems=[],heroSlides=[],currentHero=0,currentGroup=[],currentIndex=0,selectedSize=null,currentUser=null,editingHeroId=null;
 
-function isAdmin(){return !!(currentUser&&currentUser.email&&currentUser.email.toLowerCase()===ADMIN_EMAIL.toLowerCase());}
+function isAdmin(){return !!(currentUser&&currentUser.email&&ADMIN_EMAILS.includes(currentUser.email.toLowerCase()));}
         function updateAdminUI(){
             const a=isAdmin();
 document.getElementById('navHeroBtn').style.display=a?'flex':'none';
