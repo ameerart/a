@@ -129,7 +129,7 @@
         .social{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(232,180,90,0.2);color:#fff;transition:.3s;cursor:pointer}
         .social:hover{background:linear-gradient(135deg,#e8b45a,#c96f1f);color:#0b0d12;transform:translateY(-3px);box-shadow:0 10px 25px rgba(201,111,31,0.4)}
 
-.reveal-bar{position:relative}
+        .reveal-bar{position:relative}
         .reveal-bar::after{content:'';position:absolute;bottom:-8px;right:0;left:0;height:4px;border-radius:4px;background:linear-gradient(90deg,#e8b45a,#c96f1f,#a8551a);transform:scaleX(0);transform-origin:right;transition:transform .8s ease}
         .reveal-bar.in-view::after{transform:scaleX(1)}
 
@@ -160,9 +160,9 @@
 <body>
 
 <!-- ================= شاشة الدخول الأولى (جداريات) =================
-     ⬇️ لتغيير صورة الخلفية: عدّل مسار الصورة في الوسم img أدناه فقط ⬇️ -->
+     لتغيير صورة الخلفية: عدّل مسار الصورة في الوسم img أدناه فقط -->
 <div id="splashScreen">
-    <img id="splashBg" src="images/hero.jpg" alt="جدارية">
+<img id="splashBg" src="images/taher.jpg" alt="جدارية">
     <div class="splash-overlay"></div>
     <div class="splash-content">
         <div class="splash-brush">🖌️</div>
@@ -200,8 +200,11 @@
                 <div class="nav-link" data-target="contact" onclick="goToSection('contact')">تواصل</div>
             </div>
 
-            <div class="order-2 md:order-3 flex items-center gap-2">
+<div class="order-2 md:order-3 flex items-center gap-2">
+<button id="navHeroBtn" onclick="openAddHero()" style="display:none" class="icon-btn" title="إضافة صورة للسلايدر">🖼️</button>
+                <button id="navHeroManageBtn" onclick="openHeroManage()" style="display:none" class="icon-btn" title="إدارة صور السلايدر">🗂️</button>
                 <button id="navUploadBtn" onclick="document.getElementById('uploadModal').style.display='flex'" style="display:none" class="icon-btn" title="رفع عمل">➕</button>
+                <button id="navLogoutBtn" onclick="logout()" style="display:none" class="icon-btn" title="تسجيل الخروج">🚪</button>
                 <div class="relative">
                     <div class="icon-btn" onclick="toggleNotif()" title="أحدث الأعمال">🔔<span id="notifBadge" class="badge">0</span></div>
                 </div>
@@ -307,8 +310,8 @@
     <footer id="contact" class="py-14 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="flex items-center gap-3 order-2 md:order-1">
-                <a class="social" href="https://instagram.com" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-                <a class="social" href="https://facebook.com" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a class="social" href="https://instagram.com/amer.aeyd" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+                <a class="social" href="https://facebook.com/ameer.aied.3" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
                 <a class="social" href="https://youtube.com" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
                 <a class="social" href="https://wa.me/9647829558820" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
             </div>
@@ -346,6 +349,32 @@
             <textarea id="artDesc" placeholder="تفاصيل" class="glass-input h-20"></textarea>
             <input type="file" id="artFiles" multiple class="block w-full text-xs text-gray-400 mb-6">
             <button onclick="uploadImages()" id="upBtn" class="w-full bg-green-600 p-4 rounded-xl font-black text-white text-lg">نشر الآن</button>
+        </div>
+    </div>
+
+<div id="heroModal" class="modal">
+        <div class="modal-content max-w-lg p-10 border-2 border-gold">
+            <div class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">✕</div>
+            <h2 class="text-2xl font-art font-black gold mb-8 text-center underline" id="heroModalTitle">إضافة صورة للسلايدر</h2>
+            <input type="text" id="heroTitleInput" placeholder="اسم اللوحة" class="glass-input">
+            <input type="text" id="heroPriceInput" placeholder="السعر (مثال: 100$)" class="glass-input">
+            <input type="text" id="heroSizeInput" placeholder="المقاس (مثال: 50x70 أو A4)" class="glass-input">
+            <input type="text" id="heroDiscountInput" placeholder="الخصم (مثال: 25 = %25 أو اتركه فارغاً)" class="glass-input">
+            <textarea id="heroDescInput" placeholder="تفاصيل" class="glass-input h-20"></textarea>
+            <p class="text-[10px] text-gray-500 mb-2">صورة اللوحة:</p>
+            <input type="file" id="heroFile" class="block w-full text-xs mb-6 text-white bg-white/5 p-2 rounded">
+            <p class="text-[10px] text-gray-400 mb-4">💡 عند إزالة الحقل من السلايدر، لن تُحذف الصورة من المعرض/الألبوم.</p>
+            <button onclick="saveHeroSlide()" id="heroSaveBtn" class="w-full gold-bg p-4 rounded-xl font-black text-lg" style="color:#0b0d12">حفظ</button>
+        </div>
+    </div>
+
+    <!-- ================= لوحة إدارة صور السلايدر ================= -->
+    <div id="heroManageModal" class="modal">
+        <div class="modal-content max-w-2xl p-8 border-2 border-gold">
+            <div class="close-btn" onclick="this.parentElement.parentElement.style.display='none'">✕</div>
+            <h2 class="text-2xl font-art font-black gold mb-6 text-center underline">إدارة صور السلايدر</h2>
+            <p class="text-[11px] text-gray-400 text-center mb-6">كل صورة هنا مستقلة عن المعرض — حذفها لا يؤثر على الألبوم.</p>
+            <div id="heroManageList" class="space-y-3 max-h-[60vh] overflow-y-auto"></div>
         </div>
     </div>
 
@@ -457,12 +486,15 @@ AOS.init({duration:1000,once:false});
         const ADMIN_EMAIL="taheralrsam100@gmail.com";
         const IMGBB_KEY="2992948833d81d6dc8555d60cdd13431";
         const MY_PHONE="9647829558820";
-        let artworks=[],heroItems=[],currentHero=0,currentGroup=[],currentIndex=0,selectedSize=null,currentUser=null;
+let artworks=[],heroItems=[],heroSlides=[],currentHero=0,currentGroup=[],currentIndex=0,selectedSize=null,currentUser=null,editingHeroId=null;
 
-        function isAdmin(){return !!(currentUser&&currentUser.email&&currentUser.email.toLowerCase()===ADMIN_EMAIL.toLowerCase());}
+function isAdmin(){return !!(currentUser&&currentUser.email&&currentUser.email.toLowerCase()===ADMIN_EMAIL.toLowerCase());}
         function updateAdminUI(){
             const a=isAdmin();
+document.getElementById('navHeroBtn').style.display=a?'flex':'none';
+            document.getElementById('navHeroManageBtn').style.display=a?'flex':'none';
             document.getElementById('navUploadBtn').style.display=a?'flex':'none';
+            document.getElementById('navLogoutBtn').style.display=a?'flex':'none';
             document.getElementById('bioEditBtn').style.display=a?'block':'none';
             document.getElementById('heroEditBtn').style.display=a?'flex':'none';
             document.getElementById('heroDeleteBtn').style.display=a?'flex':'none';
@@ -474,6 +506,10 @@ AOS.init({duration:1000,once:false});
         async function login(){
             try{await auth.signInWithEmailAndPassword(document.getElementById('email').value,document.getElementById('password').value);document.getElementById('loginModal').style.display='none';location.reload();}
             catch(e){alert("خطأ في البريد أو الرمز!");}
+        }
+
+        function logout(){
+            auth.signOut().then(()=>{location.reload();}).catch(()=>{alert("حدث خطأ في تسجيل الخروج");});
         }
 
         function toggleNotif(){const p=document.getElementById('notifPanel');p.style.display=p.style.display==='none'?'block':'none';renderNotifications();}
@@ -526,10 +562,15 @@ AOS.init({duration:1000,once:false});
             }catch(e){alert("حدث خطأ في الحفظ!");btn.disabled=false;btn.innerText="حفظ البيانات";}
         }
 
-        function startListening(){
+function startListening(){
             db.collection('artworks').orderBy('createdAt','desc').onSnapshot(snap=>{
                 artworks=snap.docs.map(doc=>({id:doc.id,...doc.data()}));
                 updateFilters();renderGallery('all');renderHero();updateBadge();renderNotifications();
+            });
+            db.collection('heroSlides').orderBy('createdAt','desc').onSnapshot(snap=>{
+                heroSlides=snap.docs.map(doc=>({id:doc.id,...doc.data()}));
+                renderHero();
+                if(document.getElementById('heroManageModal').style.display==='flex')renderHeroManage();
             });
         }
         function updateBadge(){const b=document.getElementById('notifBadge'),n=artworks.length;b.innerText=n>9?'9+':n;b.style.display=n===0?'none':'flex';}
@@ -547,12 +588,8 @@ AOS.init({duration:1000,once:false});
             location.reload();
         }
 
-        function renderHero(){
-            heroItems=[];const seen=new Set();
-            artworks.forEach(art=>{
-                if(art.group&&art.group.trim()!==""){if(!seen.has(art.group)){seen.add(art.group);const grp=artworks.filter(a=>a.group===art.group);heroItems.push({...grp[0],title:art.group+' (ألبوم '+grp.length+')',isGroup:true});}}
-                else heroItems.push({...art,isGroup:false});
-            });
+function renderHero(){
+            heroItems=heroSlides.map(s=>({...s,isGroup:false}));
             if(heroItems.length===0){document.getElementById('heroEmpty').classList.remove('hidden');document.getElementById('heroSlide').style.display='none';return;}
             document.getElementById('heroEmpty').classList.add('hidden');document.getElementById('heroSlide').style.display='grid';
             const thumbs=document.getElementById('heroThumbs');
@@ -580,8 +617,80 @@ AOS.init({duration:1000,once:false});
             img.style.opacity='0';img.style.transition='opacity .4s';
             setTimeout(()=>{img.src=art.url;img.onload=()=>{img.style.opacity='1';extractColor(img);drawBrushEffect();};},150);
         }
-        function goSlide(n){setSlide(currentHero+n);}
+function goSlide(n){setSlide(currentHero+n);}
         function selectSize(btn){document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedSize=btn.innerText;}
+
+        // ===== إدارة صور السلايدر (مستقلة عن المعرض) =====
+        function openAddHero(){
+            editingHeroId=null;
+            document.getElementById('heroModalTitle').innerText="إضافة صورة للسلايدر";
+            document.getElementById('heroTitleInput').value="";
+            document.getElementById('heroPriceInput').value="";
+            document.getElementById('heroSizeInput').value="";
+            document.getElementById('heroDiscountInput').value="";
+            document.getElementById('heroDescInput').value="";
+            document.getElementById('heroFile').value="";
+            document.getElementById('heroModal').style.display='flex';
+        }
+        function openHeroManage(){
+            document.getElementById('heroManageModal').style.display='flex';
+            renderHeroManage();
+        }
+        function renderHeroManage(){
+            const box=document.getElementById('heroManageList');
+            if(!box)return;
+            if(heroSlides.length===0){box.innerHTML='<div class="text-center text-gray-500 font-bold py-10">لا توجد صور في السلايدر بعد</div>';return;}
+            box.innerHTML=heroSlides.map(s=>`
+                <div class="flex items-center gap-3 p-3 rounded-2xl" style="background:rgba(255,255,255,0.04);border:1px solid rgba(232,180,90,0.15)">
+                    <img src="${s.url}" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <div class="font-black text-sm text-white truncate">${s.title||'بدون عنوان'}</div>
+                        <div class="text-[10px] text-gray-400 font-bold">${s.price||'اتصل'} • ${s.size||''}</div>
+                    </div>
+                    <button onclick="editHeroSlide('${s.id}')" class="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-xl text-xs font-bold transition flex-shrink-0">✏️ تعديل</button>
+                    <button onclick="deleteHeroSlide('${s.id}')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-3 py-2 rounded-xl text-xs font-bold transition flex-shrink-0">🗑️ حذف</button>
+                </div>`).join('');
+        }
+        function editHeroSlide(id){
+            const s=heroSlides.find(x=>x.id===id);if(!s)return;
+            editingHeroId=id;
+            document.getElementById('heroModalTitle').innerText="تعديل صورة السلايدر";
+            document.getElementById('heroTitleInput').value=s.title||'';
+            document.getElementById('heroPriceInput').value=s.price||'';
+            document.getElementById('heroSizeInput').value=s.size||'';
+            document.getElementById('heroDiscountInput').value=s.discount||'';
+            document.getElementById('heroDescInput').value=s.desc||'';
+            document.getElementById('heroFile').value="";
+            document.getElementById('heroModal').style.display='flex';
+        }
+        async function saveHeroSlide(){
+            const title=document.getElementById('heroTitleInput').value,
+                  price=document.getElementById('heroPriceInput').value,
+                  size=document.getElementById('heroSizeInput').value,
+                  discount=document.getElementById('heroDiscountInput').value,
+                  desc=document.getElementById('heroDescInput').value,
+                  file=document.getElementById('heroFile').files[0];
+            if(!title)return alert("أدخل اسم اللوحة");
+            if(!editingHeroId&&!file)return alert("اختر صورة اللوحة");
+            const btn=document.getElementById('heroSaveBtn');btn.disabled=true;btn.innerText="جاري الحفظ...";
+            try{
+                let url=editingHeroId?(heroSlides.find(x=>x.id===editingHeroId)||{}).url:"";
+                if(file){const fd=new FormData();fd.append("image",file);const r=await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`,{method:"POST",body:fd});const d=await r.json();if(d.success)url=d.data.url;}
+                const data={title,price:price||"اتصل",size:size||"A4",discount,desc,url};
+                if(editingHeroId){await db.collection('heroSlides').doc(editingHeroId).update(data);}
+                else{await db.collection('heroSlides').add({...data,createdAt:firebase.firestore.FieldValue.serverTimestamp()});}
+                document.getElementById('heroModal').style.display='none';
+                document.getElementById('heroManageModal').style.display='none';
+                alert("تم الحفظ!");
+                document.getElementById('heroManageModal').style.display='flex';
+            }catch(e){alert("حدث خطأ في الحفظ!");}
+            btn.disabled=false;btn.innerText="حفظ";
+        }
+        async function deleteHeroSlide(id){
+            if(!confirm("حذف هذه الصورة من السلايدر؟ لن يُحذف العمل من المعرض."))return;
+            await db.collection('heroSlides').doc(id).delete();
+            renderHeroManage();
+        }
 
         function openEditArt(){
             const art=heroItems[currentHero];if(!art)return;
@@ -592,17 +701,17 @@ AOS.init({duration:1000,once:false});
             document.getElementById('editArtDesc').value=art.desc||'';
             document.getElementById('editArtModal').style.display='flex';
         }
-        async function saveEditArt(){
+async function saveEditArt(){
             const art=heroItems[currentHero];if(!art)return;
             const btn=document.getElementById('editArtSaveBtn');btn.disabled=true;btn.innerText="جاري الحفظ...";
             try{
                 let imgUrl=art.url;const file=document.getElementById('editArtFile').files[0];
                 if(file){const fd=new FormData();fd.append("image",file);const r=await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`,{method:"POST",body:fd});const d=await r.json();if(d.success)imgUrl=d.data.url;}
-                await db.collection('artworks').doc(art.id).update({title:document.getElementById('editArtTitle').value,category:document.getElementById('editArtCategory').value,price:document.getElementById('editArtPrice').value,size:document.getElementById('editArtSize').value,desc:document.getElementById('editArtDesc').value,url:imgUrl});
-                document.getElementById('editArtModal').style.display='none';alert("تم التعديل!");location.reload();
+                await db.collection('heroSlides').doc(art.id).update({title:document.getElementById('editArtTitle').value,price:document.getElementById('editArtPrice').value,size:document.getElementById('editArtSize').value,desc:document.getElementById('editArtDesc').value,url:imgUrl});
+                document.getElementById('editArtModal').style.display='none';alert("تم التعديل!");
             }catch(e){alert("خطأ في الحفظ!");btn.disabled=false;btn.innerText="حفظ التعديلات";}
         }
-        async function deleteHeroArt(){const art=heroItems[currentHero];if(!art)return;if(confirm("حذف هذا العمل؟")){await db.collection('artworks').doc(art.id).delete();location.reload();}}
+        async function deleteHeroArt(){const art=heroItems[currentHero];if(!art)return;if(confirm("حذف هذه الصورة من السلايدر؟")){await db.collection('heroSlides').doc(art.id).delete();}}
 
         function drawBrushEffect(){
             const canvas=document.getElementById('brushCanvas'),img=document.getElementById('heroImg');
