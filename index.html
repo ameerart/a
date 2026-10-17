@@ -2227,14 +2227,13 @@
 
         // ===== تهيئة Firebase =====
         const firebaseConfig = {
-            apiKey: "AIzaSyD0g9fQAHVKLfdwUTFzsRvgd_ejXKgDMZM",
-            authDomain: "artt2001-47518.firebaseapp.com",
-            databaseURL: "https://artt2001-47518-default-rtdb.firebaseio.com",
-            projectId: "artt2001-47518",
-            storageBucket: "artt2001-47518.firebasestorage.app",
-            messagingSenderId: "254647132198",
-            appId: "1:254647132198:web:42e0e71b3b9443ab9dc6e7",
-            measurementId: "G-C7WSZ6GSCJ"
+            apiKey: "AIzaSyDPLdyIpzU-IAovzrWqvH-mJNneP8W2nOA",
+            authDomain: "ameer-5ad16.firebaseapp.com",
+            projectId: "ameer-5ad16",
+            storageBucket: "ameer-5ad16.firebasestorage.app",
+            messagingSenderId: "819681497602",
+            appId: "1:819681497602:web:ea755095b3a0c178dd8d1b",
+            measurementId: "G-W3CWEX8SLH"
         };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
@@ -2672,16 +2671,28 @@
                 document.getElementById('loginModal').style.display = 'flex';
                 return;
             }
-            // تعبئة بيانات النماذج من الإعدادات الحالية
-            loadSettingsIntoDashboard();
-            if (initialTab === 'menu') {
-                switchTab('tab-theme');
-                openDashboardMenu();
-            } else {
-                switchTab(initialTab);
+            try {
+                loadSettingsIntoDashboard();
+            } catch (e) {
+                console.warn("loadSettingsIntoDashboard error:", e);
             }
-            document.getElementById('masterDashboardModal').style.display = 'flex';
-            updateDashboardMenuBadges();
+            try {
+                if (initialTab === 'menu') {
+                    switchTab('tab-theme');
+                    openDashboardMenu();
+                } else {
+                    switchTab(initialTab);
+                }
+            } catch (e) {
+                console.warn("switchTab error:", e);
+            }
+            const modal = document.getElementById('masterDashboardModal');
+            if (modal) modal.style.display = 'flex';
+            try {
+                updateDashboardMenuBadges();
+            } catch (e) {
+                console.warn("updateDashboardMenuBadges error:", e);
+            }
         }
 
         function closeMasterDashboard() {
