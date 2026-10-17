@@ -1036,10 +1036,12 @@
                 box-shadow: 0 0 0 0 rgba(232, 180, 90, 0.9);
                 border-color: var(--primary-color);
             }
+
             50% {
                 box-shadow: 0 0 28px 8px rgba(232, 180, 90, 0.55);
                 border-color: #fff;
             }
+
             100% {
                 box-shadow: 0 0 0 0 transparent;
             }
@@ -1101,7 +1103,8 @@
                 <div class="order-2 md:order-3 flex items-center gap-2">
                     <!-- أزرار الإدارة الشاملة (3 شخطات) -->
                     <button id="navDashboardBtn" onclick="openMasterDashboard()" style="display:none"
-                        class="icon-btn gold-bg font-black flex items-center justify-center p-2.5 gap-1.5" title="لوحة التحكم (3 شخطات ☰)">
+                        class="icon-btn gold-bg font-black flex items-center justify-center p-2.5 gap-1.5"
+                        title="لوحة التحكم (3 شخطات ☰)">
                         <div class="hamburger-bars-box small">
                             <span class="bar-line" style="background:#0b0d12;height:2px;"></span>
                             <span class="bar-line" style="background:#0b0d12;height:2px;"></span>
@@ -1324,20 +1327,23 @@
             <div class="close-btn" onclick="closeMasterDashboard()">✕</div>
 
             <!-- Header with 3-Lines (☰) Hamburger Button -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
+            <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
                 <div class="flex items-center gap-3.5">
                     <!-- زر الـ 3 شخطات البارز لتعديل كل شيء -->
-                    <button id="dashboardHamburgerBtn" onclick="toggleDashboardMenu()" 
-                            class="dashboard-hamburger-btn group" 
-                            title="قائمة التعديل الشاملة (3 شخطات ☰) - انقر لعرض وتعديل كل شيء">
+                    <button id="dashboardHamburgerBtn" onclick="toggleDashboardMenu()"
+                        class="dashboard-hamburger-btn group"
+                        title="قائمة التعديل الشاملة (3 شخطات ☰) - انقر لعرض وتعديل كل شيء">
                         <div class="hamburger-bars-box">
                             <span class="bar-line line-1"></span>
                             <span class="bar-line line-2"></span>
                             <span class="bar-line line-3"></span>
                         </div>
                         <div class="flex flex-col text-right leading-none">
-                            <span class="text-xs font-black text-white group-hover:text-black transition">تعديل كل شيء</span>
-                            <span class="text-[9px] gold group-hover:text-black font-extrabold mt-1 flex items-center gap-1">
+                            <span class="text-xs font-black text-white group-hover:text-black transition">تعديل كل
+                                شيء</span>
+                            <span
+                                class="text-[9px] gold group-hover:text-black font-extrabold mt-1 flex items-center gap-1">
                                 <span>(3 شخطات ☰)</span>
                                 <span class="inline-block w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping"></span>
                             </span>
@@ -1350,16 +1356,20 @@
                         </h2>
                         <div class="flex items-center gap-2 mt-1">
                             <span class="text-[11px] text-gray-400 font-bold">القسم المفتوح:</span>
-                            <span id="currentActiveTabLabel" class="text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-0.5 rounded-full font-bold">🎨 الألوان والتصميم ومظهر العناصر</span>
+                            <span id="currentActiveTabLabel"
+                                class="text-[11px] text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-0.5 rounded-full font-bold">🎨
+                                الألوان والتصميم ومظهر العناصر</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <button onclick="toggleDashboardMenu()" class="px-3 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 border border-white/10 hover:border-yellow-500/50">
+                    <button onclick="toggleDashboardMenu()"
+                        class="px-3 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 border border-white/10 hover:border-yellow-500/50">
                         <span>☰</span> <span class="hidden sm:inline">استعراض خيارات التعديل</span>
                     </button>
-                    <div class="hidden md:flex items-center gap-1.5 text-xs text-green-400 bg-green-500/10 border border-green-500/20 px-3 py-1.5 rounded-xl font-bold">
+                    <div
+                        class="hidden md:flex items-center gap-1.5 text-xs text-green-400 bg-green-500/10 border border-green-500/20 px-3 py-1.5 rounded-xl font-bold">
                         <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         <span id="adminUserEmailBadge">متصل كمسؤول</span>
                     </div>
@@ -1377,7 +1387,8 @@
 
             <!-- ================= تبويب 1: الألوان والتصميم (Color Customization) ================= -->
             <div id="tab-theme" class="tab-panel active space-y-6">
-                <div id="secColors" class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
+                <div id="secColors"
+                    class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
                     <h3 class="text-base font-black text-white mb-3 flex items-center gap-2">
                         <span>🎨</span> تخصيص ألوان الموقع بالكامل (Color Studio)
                     </h3>
@@ -1483,7 +1494,8 @@
                 </div>
 
                 <!-- خيارات مظهر العناصر (Layout & Element Visibility) -->
-                <div id="secStyles" class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
+                <div id="secStyles"
+                    class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
                     <h3 class="text-base font-black text-white mb-4 flex items-center gap-2">
                         <span>👁️</span> مظهر العناصر وإظهار / إخفاء الأقسام
                     </h3>
@@ -1536,7 +1548,8 @@
             <!-- ================= تبويب 2: صور وبيانات الموقع (Site Assets & Media) ================= -->
             <div id="tab-site-media" class="tab-panel space-y-6">
                 <!-- صورة وبيانات شاشة الدخول الأولى -->
-                <div id="secSplash" class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
+                <div id="secSplash"
+                    class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
                     <h3 class="text-base font-black text-white mb-4 flex items-center gap-2">
                         <span>🖼️</span> صورة وشاشة الدخول الأولى (Splash Screen)
                     </h3>
@@ -1616,7 +1629,8 @@
                 </div>
 
                 <!-- أرقام وحسابات التواصل -->
-                <div id="secContact" class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
+                <div id="secContact"
+                    class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
                     <h3 class="text-base font-black text-white mb-4 flex items-center gap-2">
                         <span>📞</span> أرقام التواصل وروابط المنصات
                     </h3>
@@ -1646,7 +1660,8 @@
             <!-- ================= تبويب 3: إدارة الألبومات والمعارض (Albums Management) ================= -->
             <div id="tab-albums" class="tab-panel space-y-6">
                 <!-- شريط إنشاء ألبوم جديد -->
-                <div id="secNewAlbum" class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
+                <div id="secNewAlbum"
+                    class="bg-white/5 p-5 rounded-2xl border border-white/10 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-base font-black text-white flex items-center gap-2">
                             <span>🗂️</span> إنشاء ألبوم جديد
@@ -1739,7 +1754,8 @@
                     <div>
                         <h3 class="text-sm font-black text-white flex items-center gap-1.5">
                             <span>قائمة التعديل الشاملة</span>
-                            <span class="text-[9px] gold bg-yellow-500/10 px-1.5 py-0.5 rounded font-extrabold">(3 شخطات ☰)</span>
+                            <span class="text-[9px] gold bg-yellow-500/10 px-1.5 py-0.5 rounded font-extrabold">(3 شخطات
+                                ☰)</span>
                         </h3>
                         <p class="text-[10px] text-gray-400">انقر على أي خيار لتعديله فوراً في اللوحة</p>
                     </div>
@@ -1758,22 +1774,25 @@
 
             <!-- Drawer Scrollable List -->
             <div class="drawer-body custom-scroll" id="dashboardMenuItemsList">
-                
+
                 <!-- 1. الألوان والتصميم -->
                 <div class="menu-category-group" data-title="الالوان والتصميم كولور ثيم قوالب خلفية نصوص حواف">
                     <div class="menu-cat-title">
                         <span>🎨</span> <span>التحكم بالألوان والتصميم</span>
                     </div>
-                    <div class="drawer-item" onclick="navigateToSection('tab-theme', 'secColors', 'تخصيص ألوان الموقع')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-theme', 'secColors', 'تخصيص ألوان الموقع')">
                         <div class="item-icon bg-yellow-500/20 text-yellow-400">🎨</div>
                         <div class="item-info">
                             <div class="item-title">تخصيص درجات ألوان الموقع (Color Studio)</div>
-                            <div class="item-desc">تعديل اللون الأساسي، الثانوي، الداكن، الخلفية، والبطاقات والنصوص</div>
+                            <div class="item-desc">تعديل اللون الأساسي، الثانوي، الداكن، الخلفية، والبطاقات والنصوص
+                            </div>
                         </div>
                         <div class="item-arrow">←</div>
                     </div>
 
-                    <div class="drawer-item" onclick="navigateToSection('tab-theme', 'secPresets', 'قوالب الألوان السريعة')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-theme', 'secPresets', 'قوالب الألوان السريعة')">
                         <div class="item-icon bg-amber-500/20 text-amber-300">⚡</div>
                         <div class="item-info">
                             <div class="item-title">قوالب ألوان جاهزة بنقرة واحدة</div>
@@ -1782,7 +1801,8 @@
                         <div class="item-arrow">←</div>
                     </div>
 
-                    <div class="drawer-item" onclick="navigateToSection('tab-theme', 'secStyles', 'مظهر الستايلات والعناصر')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-theme', 'secStyles', 'مظهر الستايلات والعناصر')">
                         <div class="item-icon bg-purple-500/20 text-purple-400">👁️</div>
                         <div class="item-info">
                             <div class="item-title">مظهر العناصر وانحناء الحواف والأقسام</div>
@@ -1793,11 +1813,13 @@
                 </div>
 
                 <!-- 2. واجهة وبيانات الموقع -->
-                <div class="menu-category-group" data-title="صور شاشة دخول سبلاش بايو سيرة نبذة واتساب انستغرام فيسبوك ارقام تواصل">
+                <div class="menu-category-group"
+                    data-title="صور شاشة دخول سبلاش بايو سيرة نبذة واتساب انستغرام فيسبوك ارقام تواصل">
                     <div class="menu-cat-title">
                         <span>🖼️</span> <span>التحكم بالصور وبيانات الموقع</span>
                     </div>
-                    <div class="drawer-item" onclick="navigateToSection('tab-site-media', 'secSplash', 'شاشة الدخول الأولى')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-site-media', 'secSplash', 'شاشة الدخول الأولى')">
                         <div class="item-icon bg-blue-500/20 text-blue-400">🌅</div>
                         <div class="item-info">
                             <div class="item-title">شاشة الدخول الأولى (Splash Screen)</div>
@@ -1806,7 +1828,8 @@
                         <div class="item-arrow">←</div>
                     </div>
 
-                    <div class="drawer-item" onclick="navigateToSection('tab-site-media', 'secBio', 'صورة وبيانات السيرة الذاتية')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-site-media', 'secBio', 'صورة وبيانات السيرة الذاتية')">
                         <div class="item-icon bg-emerald-500/20 text-emerald-400">👤</div>
                         <div class="item-info">
                             <div class="item-title">صورة السيرة الذاتية وتفاصيلها (Bio)</div>
@@ -1815,7 +1838,8 @@
                         <div class="item-arrow">←</div>
                     </div>
 
-                    <div class="drawer-item" onclick="navigateToSection('tab-site-media', 'secContact', 'أرقام وحسابات التواصل')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-site-media', 'secContact', 'أرقام وحسابات التواصل')">
                         <div class="item-icon bg-green-500/20 text-green-400">📞</div>
                         <div class="item-info">
                             <div class="item-title">أرقام التواصل وروابط المنصات</div>
@@ -1830,7 +1854,8 @@
                     <div class="menu-cat-title">
                         <span>🗂️</span> <span>إدارة الألبومات والمعارض</span>
                     </div>
-                    <div class="drawer-item" onclick="navigateToSection('tab-albums', 'secNewAlbum', 'إنشاء ألبوم جديد')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-albums', 'secNewAlbum', 'إنشاء ألبوم جديد')">
                         <div class="item-icon bg-orange-500/20 text-orange-400">➕</div>
                         <div class="item-info">
                             <div class="item-title">إنشاء ألبوم جديد وتسميته</div>
@@ -1839,13 +1864,16 @@
                         <div class="item-arrow">←</div>
                     </div>
 
-                    <div class="drawer-item" onclick="navigateToSection('tab-albums', 'secAlbumsList', 'قائمة الألبومات وإدارة صورها')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-albums', 'secAlbumsList', 'قائمة الألبومات وإدارة صورها')">
                         <div class="item-icon bg-cyan-500/20 text-cyan-400">📂</div>
                         <div class="item-info">
                             <div class="item-title">إدارة الألبومات وصورها الحالية</div>
                             <div class="item-desc">تعديل الاسم، إخفاء/إظهار، إدارة وحذف وفصل صور كل ألبوم</div>
                         </div>
-                        <span id="drawerAlbumsBadge" class="text-[10px] bg-cyan-500/20 text-cyan-300 font-bold px-2 py-0.5 rounded-full">0 ألبوم</span>
+                        <span id="drawerAlbumsBadge"
+                            class="text-[10px] bg-cyan-500/20 text-cyan-300 font-bold px-2 py-0.5 rounded-full">0
+                            ألبوم</span>
                     </div>
                 </div>
 
@@ -1863,13 +1891,16 @@
                         <div class="item-arrow">←</div>
                     </div>
 
-                    <div class="drawer-item" onclick="navigateToSection('tab-gallery', 'secGalleryList', 'إدارة أعمال المعرض')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-gallery', 'secGalleryList', 'إدارة أعمال المعرض')">
                         <div class="item-icon bg-pink-500/20 text-pink-400">✏️</div>
                         <div class="item-info">
                             <div class="item-title">تعديل وإخفاء وحذف أعمال المعرض</div>
                             <div class="item-desc">البحث بالاسم والقسم، تعديل الأسعار، وإخفاء أي لوحة للزوار</div>
                         </div>
-                        <span id="drawerArtworksBadge" class="text-[10px] bg-pink-500/20 text-pink-300 font-bold px-2 py-0.5 rounded-full">0 عمل</span>
+                        <span id="drawerArtworksBadge"
+                            class="text-[10px] bg-pink-500/20 text-pink-300 font-bold px-2 py-0.5 rounded-full">0
+                            عمل</span>
                     </div>
                 </div>
 
@@ -1878,13 +1909,16 @@
                     <div class="menu-cat-title">
                         <span>✨</span> <span>السلايدر الرئيسي (Hero Slider)</span>
                     </div>
-                    <div class="drawer-item" onclick="navigateToSection('tab-hero', 'secHeroList', 'إعادة ترتيب وتعديل السلايدر')">
+                    <div class="drawer-item"
+                        onclick="navigateToSection('tab-hero', 'secHeroList', 'إعادة ترتيب وتعديل السلايدر')">
                         <div class="item-icon bg-violet-500/20 text-violet-400">🔄</div>
                         <div class="item-info">
                             <div class="item-title">إعادة ترتيب وتعديل شرائح السلايدر</div>
                             <div class="item-desc">تحريك الصور لأعلى وأسفل (⬆️ ⬇️)، إخفاء/إظهار وتعديل الأسعار</div>
                         </div>
-                        <span id="drawerHeroBadge" class="text-[10px] bg-violet-500/20 text-violet-300 font-bold px-2 py-0.5 rounded-full">0 شريحة</span>
+                        <span id="drawerHeroBadge"
+                            class="text-[10px] bg-violet-500/20 text-violet-300 font-bold px-2 py-0.5 rounded-full">0
+                            شريحة</span>
                     </div>
 
                     <div class="drawer-item" onclick="openAddHero()">
@@ -1901,10 +1935,12 @@
 
             <!-- Drawer Footer -->
             <div class="drawer-footer space-y-2">
-                <button onclick="saveAllCurrentChanges()" class="gold-btn w-full justify-center text-xs py-2.5 shadow-lg">
+                <button onclick="saveAllCurrentChanges()"
+                    class="gold-btn w-full justify-center text-xs py-2.5 shadow-lg">
                     💾 حفظ وتطبيق كافة التعديلات للزوار
                 </button>
-                <button onclick="toggleDashboardMenu(false)" class="w-full text-center text-[11px] text-gray-400 hover:text-white py-1 transition">
+                <button onclick="toggleDashboardMenu(false)"
+                    class="w-full text-center text-[11px] text-gray-400 hover:text-white py-1 transition">
                     ✕ إغلاق القائمة والعودة للوحة
                 </button>
             </div>
@@ -2191,13 +2227,14 @@
 
         // ===== تهيئة Firebase =====
         const firebaseConfig = {
-            apiKey: "AIzaSyDPLdyIpzU-IAovzrWqvH-mJNneP8W2nOA",
-            authDomain: "ameer-5ad16.firebaseapp.com",
-            projectId: "ameer-5ad16",
-            storageBucket: "ameer-5ad16.firebasestorage.app",
-            messagingSenderId: "819681497602",
-            appId: "1:819681497602:web:ea755095b3a0c178dd8d1b",
-            measurementId: "G-W3CWEX8SLH"
+            apiKey: "AIzaSyD0g9fQAHVKLfdwUTFzsRvgd_ejXKgDMZM",
+            authDomain: "artt2001-47518.firebaseapp.com",
+            databaseURL: "https://artt2001-47518-default-rtdb.firebaseio.com",
+            projectId: "artt2001-47518",
+            storageBucket: "artt2001-47518.firebasestorage.app",
+            messagingSenderId: "254647132198",
+            appId: "1:254647132198:web:42e0e71b3b9443ab9dc6e7",
+            measurementId: "G-C7WSZ6GSCJ"
         };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
@@ -2265,7 +2302,7 @@
                 document.getElementById('password').value = '';
                 updateAdminUI();
                 showToast("تم تسجيل الدخول بنجاح كمسؤول!");
-                
+
                 // فتح لوحة التحكم الشاملة تلقائياً بعد تسجيل الدخول
                 setTimeout(() => {
                     openMasterDashboard();
