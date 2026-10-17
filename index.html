@@ -3629,7 +3629,11 @@
                 showToast("شكراً لك! تم نشر رأيك بنجاح ✨");
             } catch (err) {
                 console.error("Error submitting review:", err);
-                showToast("حدث خطأ أثناء حفظ التعليق: " + (err.message || err.code), "error");
+                let msg = err.message || err.code || '';
+                if (err.code === 'permission-denied' || String(msg).includes('insufficient permissions')) {
+                    msg = "قواعد فايربيس (Firestore Rules) تمنع الحفظ للزوار! يجب تفعيل الإذن في Firebase Console.";
+                }
+                showToast("حدث خطأ: " + msg, "error");
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = `<span>نشر الرأي</span> <span>✨</span>`;
