@@ -1097,11 +1097,12 @@
                     <div class="nav-link active" data-target="home" onclick="goToSection('home')">الرئيسية</div>
                     <div class="nav-link" data-target="about" onclick="goToSection('about')">السيرة</div>
                     <div class="nav-link" data-target="gallery" onclick="goToSection('gallery')">المعرض</div>
+                    <div class="nav-link" data-target="reviews" onclick="goToSection('reviews')">الآراء</div>
                     <div class="nav-link" data-target="contact" onclick="goToSection('contact')">تواصل</div>
                 </div>
 
                 <div class="order-2 md:order-3 flex items-center gap-2">
-                    <!-- أزرار الإدارة الشاملة (3 شخطات) -->
+                    <!-- أزرار الإدارة الشاملة (3 شخطات) - تظهر للمدير فقط -->
                     <button id="navDashboardBtn" onclick="openMasterDashboard()" style="display:none"
                         class="icon-btn gold-bg font-black flex items-center justify-center p-2.5 gap-1.5"
                         title="لوحة التحكم (3 شخطات ☰)">
@@ -1115,13 +1116,6 @@
                         title="رفع عمل / ألبوم جديد">➕</button>
                     <button id="navLogoutBtn" onclick="logout()" style="display:none" class="icon-btn"
                         title="تسجيل الخروج">🚪</button>
-                    <!-- زر تسجيل دخول الإدارة المباشر (يختفي عند تسجيل الدخول) -->
-                    <button id="navLoginBtn" onclick="document.getElementById('loginModal').style.display='flex'"
-                        class="px-3.5 py-1.5 rounded-full border border-gold/50 text-xs font-bold text-gray-200 hover:text-black hover:bg-gold transition flex items-center gap-1.5"
-                        title="دخول الإدارة">
-                        <span>🔐</span>
-                        <span>دخول الإدارة</span>
-                    </button>
                     <div class="relative">
                         <div class="icon-btn" onclick="toggleNotif()" title="أحدث الأعمال">🔔<span id="notifBadge"
                                 class="badge">0</span></div>
@@ -1267,6 +1261,73 @@
             </div>
         </section>
 
+        <!-- ================= قسم آراء الزوار والتعليقات (Visitor Reviews) ================= -->
+        <section id="reviews" class="section-pad px-6 relative border-t border-white/5" style="background: radial-gradient(circle at 50% 0%, rgba(232,180,90,0.06), transparent 70%);">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <span class="text-xs gold uppercase tracking-widest font-black bg-gold/10 px-4 py-1.5 rounded-full border border-gold/20 inline-block mb-3">💬 مجتمع الفن والآراء</span>
+                    <h2 class="text-3xl md:text-5xl font-art font-black text-white">آراء وانطباعات الزوار</h2>
+                    <p class="text-gray-400 mt-3 text-sm md:text-base max-w-xl mx-auto">شاركنا انطباعك ورأيك في لوحات وجداريات أمير عايد (الرأي ثابت ويظهر للجميع، بحد أقصى 100 حرف)</p>
+                </div>
+
+                <!-- صندوق كتابة الرأي والتعليق -->
+                <div class="max-w-xl mx-auto mb-14" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6 md:p-8 rounded-3xl border border-white/10 relative" style="background: rgba(20,22,29,0.7); backdrop-filter: blur(16px); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm font-bold text-gray-200 flex items-center gap-2">
+                                <span>✍️</span> <span>أضف رأيك الخاص</span>
+                            </span>
+                            <!-- تقييم النجوم التفاعلي -->
+                            <div class="flex items-center gap-1 select-none" id="starRatingContainer" title="اختر تقييمك">
+                                <span class="star-rating-btn cursor-pointer text-xl text-yellow-400 transition hover:scale-125" onclick="setReviewRating(1)">★</span>
+                                <span class="star-rating-btn cursor-pointer text-xl text-yellow-400 transition hover:scale-125" onclick="setReviewRating(2)">★</span>
+                                <span class="star-rating-btn cursor-pointer text-xl text-yellow-400 transition hover:scale-125" onclick="setReviewRating(3)">★</span>
+                                <span class="star-rating-btn cursor-pointer text-xl text-yellow-400 transition hover:scale-125" onclick="setReviewRating(4)">★</span>
+                                <span class="star-rating-btn cursor-pointer text-xl text-yellow-400 transition hover:scale-125" onclick="setReviewRating(5)">★</span>
+                            </div>
+                        </div>
+
+                        <!-- حقل الاسم -->
+                        <div class="mb-3">
+                            <input type="text" id="reviewAuthorName" placeholder="اسمك الكريم أو لقبك (مثال: سارة، أحمد الفني...)" 
+                                maxlength="30" class="glass-input text-white text-sm" />
+                        </div>
+
+                        <!-- حقل التعليق مع عداد الحروف الدقيق (100 حرف كحد أقصى) -->
+                        <div class="relative mb-3">
+                            <textarea id="reviewContent" placeholder="اكتب رأيك أو انطباعك هنا (بحد أقصى 100 حرف)..." 
+                                maxlength="100" rows="3" oninput="updateReviewCharCount()"
+                                class="glass-input text-white text-sm resize-none"></textarea>
+                            <div class="flex items-center justify-between text-[11px] text-gray-400 mt-1 px-1">
+                                <span>الحد الأقصى: 100 حرف</span>
+                                <span id="reviewCharCountBadge" class="font-bold text-gray-300">
+                                    <span id="reviewCharCount">0</span> / 100
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- زر الإرسال -->
+                        <button id="btnSubmitReview" onclick="submitReview()" 
+                            class="w-full gold-bg py-3.5 rounded-2xl font-black text-black text-sm transition hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2 shadow-lg">
+                            <span>نشر الرأي</span> <span>✨</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- شبكة استعراض الآراء المنشورة -->
+                <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- تتولد الكروت تلقائياً وتحدث حياً من Firestore -->
+                </div>
+
+                <!-- رسالة في حال لم تكن هناك آراء بعد -->
+                <div id="reviewsEmpty" class="text-center py-12 px-4 rounded-3xl border border-white/5 hidden" style="background: rgba(255,255,255,0.02)">
+                    <div class="text-4xl mb-3">✨</div>
+                    <p class="text-gray-300 font-bold text-base">لا توجد تعليقات منشورة بعد</p>
+                    <p class="text-gray-500 text-xs mt-1">كن أول من يشارك انطباعه ورأيه في أعمال الفنان أمير عايد!</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ================= 8. FOOTER ================= -->
         <footer id="contact" class="py-14 px-6 border-t border-white/10" style="background:rgba(8,9,13,0.95)">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
@@ -1301,10 +1362,10 @@
                     <p class="text-gray-500 font-bold text-xs mt-1">أمير عايد — استوديو الفن والجداريات</p>
                 </div>
 
-                <div class="order-3 cursor-pointer"
-                    onclick="document.getElementById('loginModal').style.display='flex'">
-                    <span class="text-gray-500 hover:text-gray-300 font-bold text-xs transition">© أمير عايد 2026 | دخول
-                        الإدارة</span>
+                <div class="order-3 cursor-pointer select-none"
+                    onclick="document.getElementById('loginModal').style.display='flex'"
+                    title="أمير عايد">
+                    <span class="text-gray-600 hover:text-gray-400 font-bold text-xs transition">© أمير عايد 2026</span>
                 </div>
             </div>
         </footer>
@@ -2256,6 +2317,8 @@
         let targetUploadAlbum = null;
         let currentThemeSettings = null;
         let currentSiteSettings = null;
+        let reviewsList = [];
+        let selectedReviewRating = 5;
 
         // دالة التحقق من صلاحية الإدارة:
         // أي مستخدم مسجل دخوله بحساب رسمي من Firebase Authentication يُعتبر مسؤولاً
@@ -2268,8 +2331,6 @@
             document.getElementById('navDashboardBtn').style.display = a ? 'flex' : 'none';
             document.getElementById('navUploadBtn').style.display = a ? 'flex' : 'none';
             document.getElementById('navLogoutBtn').style.display = a ? 'flex' : 'none';
-            const navLoginBtn = document.getElementById('navLoginBtn');
-            if (navLoginBtn) navLoginBtn.style.display = a ? 'none' : 'flex';
             document.getElementById('bioQuickEditBtn').style.display = a ? 'flex' : 'none';
             document.getElementById('floatingAdminBtn').style.display = a ? 'flex' : 'none';
             document.getElementById('btnDeleteCurrent').style.display = a ? 'block' : 'none';
@@ -2279,6 +2340,9 @@
             if (emailBadge && currentUser && currentUser.email) {
                 emailBadge.innerText = currentUser.email;
             }
+
+            // تحديث بطاقات التعليقات لإظهار أزرار الحذف للمدير فقط
+            renderReviews();
         }
         updateAdminUI();
 
@@ -2390,6 +2454,14 @@
                 if (document.getElementById('masterDashboardModal').style.display === 'flex') {
                     renderHeroAdminList();
                 }
+            });
+
+            // 5. استماع حي ومباشر لقسم آراء الزوار والتعليقات
+            db.collection('reviews').orderBy('createdAt', 'desc').onSnapshot(snap => {
+                reviewsList = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                renderReviews();
+            }, err => {
+                console.warn("Reviews Firestore listener warning:", err);
             });
         }
 
@@ -3477,14 +3549,177 @@
             document.getElementById('uploadModal').style.display = 'flex';
         }
 
+        // ===== دوال قسم الآراء والتعليقات (Reviews Engine) =====
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function setReviewRating(r) {
+            selectedReviewRating = Math.max(1, Math.min(5, Number(r) || 5));
+            const stars = document.querySelectorAll('#starRatingContainer .star-rating-btn');
+            stars.forEach((s, idx) => {
+                if (idx < selectedReviewRating) {
+                    s.classList.add('text-yellow-400');
+                    s.classList.remove('text-gray-600');
+                } else {
+                    s.classList.remove('text-yellow-400');
+                    s.classList.add('text-gray-600');
+                }
+            });
+        }
+
+        function updateReviewCharCount() {
+            const el = document.getElementById('reviewContent');
+            const cnt = document.getElementById('reviewCharCount');
+            const badge = document.getElementById('reviewCharCountBadge');
+            if (!el || !cnt) return;
+            const len = el.value.length;
+            cnt.innerText = len;
+            if (len >= 95) {
+                badge.className = "font-bold text-red-400";
+            } else if (len >= 80) {
+                badge.className = "font-bold text-yellow-400";
+            } else {
+                badge.className = "font-bold text-gray-300";
+            }
+        }
+
+        async function submitReview() {
+            const nameInput = document.getElementById('reviewAuthorName');
+            const contentInput = document.getElementById('reviewContent');
+            const btn = document.getElementById('btnSubmitReview');
+            const name = (nameInput.value || '').trim();
+            const text = (contentInput.value || '').trim();
+
+            if (!name) {
+                showToast("يرجى إدخال اسمك أو لقبك", "error");
+                nameInput.focus();
+                return;
+            }
+            if (!text) {
+                showToast("يرجى كتابة رأيك أو انطباعك", "error");
+                contentInput.focus();
+                return;
+            }
+            if (text.length > 100) {
+                showToast("عذراً، التعليق يجب ألا يتجاوز 100 حرف", "error");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<span>جارٍ النشر...</span>`;
+
+            try {
+                await db.collection('reviews').add({
+                    name: name,
+                    text: text,
+                    rating: selectedReviewRating || 5,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                nameInput.value = '';
+                contentInput.value = '';
+                updateReviewCharCount();
+                setReviewRating(5);
+                showToast("شكراً لك! تم نشر رأيك بنجاح ✨");
+            } catch (err) {
+                console.error("Error submitting review:", err);
+                showToast("حدث خطأ أثناء حفظ التعليق: " + (err.message || err.code), "error");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<span>نشر الرأي</span> <span>✨</span>`;
+            }
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsContainer');
+            const emptyEl = document.getElementById('reviewsEmpty');
+            if (!container) return;
+
+            if (!reviewsList || reviewsList.length === 0) {
+                container.innerHTML = '';
+                if (emptyEl) emptyEl.classList.remove('hidden');
+                return;
+            }
+            if (emptyEl) emptyEl.classList.add('hidden');
+
+            const admin = isAdmin();
+            container.innerHTML = reviewsList.map(rev => {
+                const initial = (rev.name && rev.name.trim()) ? rev.name.trim().charAt(0) : 'ز';
+                const starsCount = Math.max(1, Math.min(5, Number(rev.rating) || 5));
+                const starsHtml = '★'.repeat(starsCount) + '☆'.repeat(5 - starsCount);
+
+                let timeStr = 'حديثاً';
+                if (rev.createdAt && rev.createdAt.toDate) {
+                    try {
+                        const d = rev.createdAt.toDate();
+                        timeStr = d.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric' });
+                    } catch (e) {}
+                }
+
+                const deleteBtnHtml = admin ? `
+                    <button onclick="deleteReview('${rev.id}')" 
+                        class="text-red-400 hover:text-red-300 p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs transition"
+                        title="حذف هذا التعليق كمسؤول">
+                        🗑️
+                    </button>
+                ` : '';
+
+                return `
+                    <div class="p-5 rounded-2xl border border-white/10 relative transition hover:border-gold/30 hover:scale-[1.01] flex flex-col justify-between"
+                        style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px);">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-full gold-bg font-black flex items-center justify-center text-sm shadow">
+                                        ${initial}
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-white text-sm">
+                                            ${escapeHtml(rev.name || 'زائر')}
+                                        </div>
+                                        <div class="text-[10px] text-gray-400 font-medium">${timeStr}</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-yellow-400 text-xs tracking-wider" title="${starsCount} من 5 نجوم">${starsHtml}</span>
+                                    ${deleteBtnHtml}
+                                </div>
+                            </div>
+                            <p class="text-gray-200 text-xs md:text-sm leading-relaxed font-medium break-words mt-1">
+                                "${escapeHtml(rev.text || '')}"
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function deleteReview(id) {
+            if (!isAdmin()) return;
+            if (!confirm("هل أنت متأكد من رغبتك في حذف هذا التعليق نهائياً؟")) return;
+            try {
+                await db.collection('reviews').doc(id).delete();
+                showToast("تم حذف التعليق بنجاح");
+            } catch (err) {
+                showToast("خطأ أثناء الحذف: " + (err.message || err.code), "error");
+            }
+        }
+
         function goToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
 
         window.addEventListener('scroll', () => {
             const h = document.documentElement;
             document.querySelector('nav').classList.toggle('scrolled', h.scrollTop > 20);
-            const secs = ['home', 'about', 'gallery', 'contact'];
+            const secs = ['home', 'about', 'gallery', 'reviews', 'contact'];
             const mid = window.scrollY + (window.innerHeight / 2);
             let active = 'home';
             secs.forEach(s => {
